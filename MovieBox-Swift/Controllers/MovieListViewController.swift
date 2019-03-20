@@ -30,7 +30,14 @@ class MovieListViewController: UITableViewController {
     //MARK: -- tableviewController --
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteMovies?.count ?? 1
+        
+        if favoriteMovies?.count == 0 {
+            self.tableView.setEmptyMessage("No movies added yet, but try searching for some new ones under the search tab")
+        } else {
+            self.tableView.restore()
+        }
+        
+        return favoriteMovies?.count ?? 0
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,6 +67,29 @@ class MovieListViewController: UITableViewController {
         
         favoriteMovies = realm.objects(Movie.self)
         tableView.reloadData()
+    }
+}
+
+//MARK: - searchbar
+extension MovieListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        favoriteMovies = favoriteMovies?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
+        
+        tableView.reloadData()
+    }
+    
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text?.count)! == 0 {
+            loadMovies()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+            
+        }
     }
 }
 

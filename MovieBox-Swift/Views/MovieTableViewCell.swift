@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SVProgressHUD
 
 class MovieTableViewCell: UITableViewCell {
     
@@ -32,9 +33,11 @@ class MovieTableViewCell: UITableViewCell {
                realm.add(movie)
                 //added movie to list
                 print("Movie added to list")
+                SVProgressHUD.showSuccess(withStatus: "Added to favorites")
             }
         } catch {
             print("Error saving item \(error)")
+            SVProgressHUD.showError(withStatus: "Move could not be added")
         }
     }
     

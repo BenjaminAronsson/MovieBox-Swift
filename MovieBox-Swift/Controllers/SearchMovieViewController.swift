@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import SVProgressHUD
 
 class SearchMovieViewController: UITableViewController {
     
@@ -35,11 +36,21 @@ class SearchMovieViewController: UITableViewController {
     let API_KEY = "e3770048"
     let MOVIE_URL = "https://www.omdbapi.com/"
     let APP_ID = "8ef1d43040955dcd731d9059d85ce0b8"
+    
     @IBAction func SearchButtonPressed(_ sender: Any) {
         
+        SVProgressHUD.show()
+        
         //get searchterm
-        if let searchTerm = searchField.text {
+        if let term = searchField.text?.lowercased() {
             
+            var searchTerm = term
+            
+            if searchTerm.hasSuffix(" ") {
+                searchTerm = String(searchTerm.dropLast())
+                print("search terms ends with space")
+            }
+        
             //create parameters
             let page : String = String(1)
             let params : [String : String] = ["page" : page, "s" : searchTerm, "apikey" : API_KEY]
@@ -56,6 +67,12 @@ class SearchMovieViewController: UITableViewController {
     //MARK: -- tableviewController --
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if filteredMovies.count == 0 {
+            self.tableView.setEmptyMessage("No movies found")
+        } else {
+            self.tableView.restore()
+        }
         return filteredMovies.count
     }
     
@@ -128,11 +145,13 @@ class SearchMovieViewController: UITableViewController {
                 }
                 filteredMovies.append(m)
             }
+            SVProgressHUD.dismiss()
             tableView.reloadData()
         }
         else {
             //create object
         print("Movies unavailable")
+        SVProgressHUD.dismiss()
         tableView.reloadData()
         }
     }
@@ -150,6 +169,27 @@ class SearchMovieViewController: UITableViewController {
     }
 }
 
+//:MARK - tableview extension
+extension UITableView {
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+        self.separatorStyle = .none;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
+    }
+}
 
 
 
