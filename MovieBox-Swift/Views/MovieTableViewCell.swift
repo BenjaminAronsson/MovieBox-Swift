@@ -6,7 +6,8 @@
 //  Copyright © 2019 se.Benjamin.Aronsson. All rights reserved.
 //
 
-import UIKit 
+import UIKit
+import RealmSwift
 
 class MovieTableViewCell: UITableViewCell {
     
@@ -17,13 +18,24 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton!
     var movie : Movie = Movie()
     
+    var favoriteMovies : Results<Movie>?
+    
+    let realm = try! Realm()
+    
 
     @IBAction func addButtonPressed(_ sender: Any) {
        
-        //added movie to list
-        let db = MyDB.sharedInstance
-        db.myMovies.append(movie)
-        print("Movie added to list")
+        
+        
+        do {
+            try self.realm.write {
+               realm.add(movie)
+                //added movie to list
+                print("Movie added to list")
+            }
+        } catch {
+            print("Error saving item \(error)")
+        }
     }
     
     //MARK: -- add button --

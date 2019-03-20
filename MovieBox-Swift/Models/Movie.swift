@@ -8,50 +8,37 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-class Movie {
+class Movie : Object {
     
-    var title : String
-    var poster : UIImage?
-    var description : String?
-    var year : String
-    var rating : Double?
+    @objc dynamic var title : String = ""
+     var poster : UIImage?
+    //@objc dynamic var description : String = ""
+    @objc dynamic var year : String = ""
+    @objc dynamic var rating : Double = 0.0
     
-    init() {
-        title = "Star wars"
-        poster = nil
-        description = "Irom Parum"
-        rating = 3.0
-        year = "1999"
-    }
+//    init() {
+//        title = "Star wars"
+//        poster = nil
+//        description = "Irom Parum"
+//        rating = 3.0
+//        year = "1999"
+//    }
+//
+//    convenience init (title : String, year : String, rating : Double) {
+//        self.init()
+//        self.title = title
+//        self.year = year
+//        self.rating = rating
+//    }
     
-    convenience init (title : String, year : String, rating : Double) {
-        self.init()
-        self.title = title
-        self.year = year
-        self.rating = rating
-    }
     
-    
-    //MARK: -- Dictionary --
-    init(data : [String : String]) {
-    
-        if let title = data["MovieTitle"] {
-            self.title = title
-        }
-        else {
-            self.title = "Hidden"
-        }
+    func getImage() {
         
-        if let year = data["MovieYear"] {
-            self.year = year
-        }
-        else {
-            self.year = "0000"
-        }
-        if let rating = data["MovieRating"] {
-            self.rating =  Double(rating)
-        }
+    }
+    
+    
     //read image
 //NSString *imagePath = data[@"MoviePoster"];
 //    if (imagePath) {
@@ -59,26 +46,4 @@ class Movie {
 //    self.poster = [UIImage imageWithData:[NSData dataWithContentsOfFile:imagePath]];
 //    }
 //    }
-    
-    }
-    
-    
-    func dictionaryFromObject() -> [String : String] {
-    
-//    // Get image data
-//    NSData *imageData = UIImageJPEGRepresentation(self.poster, 1);
-//
-//    // Get image path
-//    NSString *imagePath = [self documentsPathForFileName:[NSString stringWithFormat:@"image_%f.jpg", [NSDate timeIntervalSinceReferenceDate]]];
-//
-//    // Write image data to user's folder
-//    [imageData writeToFile:imagePath atomically:YES];
-//
-    //convert rating to string
-        let rate : String = "\(self.rating ?? 0)"
-    
-    //return NSDictionary
-    return ["MovieTitle":self.title, "MovieYear":self.year, "MovieRating":rate]
-    }
-
 }

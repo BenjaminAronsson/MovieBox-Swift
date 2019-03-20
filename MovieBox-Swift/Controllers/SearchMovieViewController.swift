@@ -14,16 +14,14 @@ class SearchMovieViewController: UITableViewController {
     
     @IBOutlet weak var searchField: UITextField!
     
-    
     var filteredMovies : [Movie] = []
-
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         if filteredMovies.count < 1 {
-            
+
             //default -- star wars
             searchField.text = "star wars"
             SearchButtonPressed(self)
@@ -31,8 +29,7 @@ class SearchMovieViewController: UITableViewController {
         }
     }
     
-    //Constants
-    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
+    //Constant
     //https://www.omdbapi.com/?s=%@&page=%ld&apikey=e3770048
     
     let API_KEY = "e3770048"
@@ -68,11 +65,14 @@ class SearchMovieViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Movie *m = _movies[indexPath.row];
-        let m = filteredMovies[indexPath.row];
-        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTableViewCell
-        cell.setMovie(containingMovie: m)
+        
         //cell.ratingDelegate = self;
-        return cell;
+        
+         let m = filteredMovies[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTableViewCell
+            cell.setMovie(containingMovie: m)
+            //cell.accessoryType = Item.done ? .checkmark : .none
+            return cell;
     }
     
     //MARK: -- Networking --
@@ -108,14 +108,14 @@ class SearchMovieViewController: UITableViewController {
             
             //adds all movies
             for i in 0..<(movieArray.count) {
-               
-                //get values
-                let title = movieArray[i]["Title"].string!
-                let year = movieArray[i]["Year"].string!
-                let rating = Double(arc4random_uniform(5));
                 
                 //create object
-                let m = Movie(title: title, year: year, rating: rating)
+                let m = Movie()
+               
+                //get values
+                m.title = movieArray[i]["Title"].string!
+                m.year = movieArray[i]["Year"].string!
+                m.rating = Double(arc4random_uniform(5));
                 
                 //get poster
                 let posterURL = movieArray[i]["Poster"].string
@@ -133,8 +133,6 @@ class SearchMovieViewController: UITableViewController {
         }
         else {
             //create object
-        let m = Movie(title: "NO MOIVES FOUND", year: "", rating: 0.0)
-        filteredMovies.append(m)
         print("Movies unavailable")
         tableView.reloadData()
         }

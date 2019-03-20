@@ -33,9 +33,9 @@ class DetailedMovieViewController: UIViewController {
         descriptionTextView.text = movie.year
         rating.maxRating = 5
         
-            if let r = movie.rating {
-                rating.rating = Int(r)
-            }
+//            if let r = movie.rating {
+//                rating.rating = Int(r)
+//            }
             
             
             if titleLabel.text == nil {

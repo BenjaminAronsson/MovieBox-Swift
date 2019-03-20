@@ -7,27 +7,26 @@
 //
 
 import UIKit
+import RealmSwift
+import RealmSwift
 
 class MovieListViewController: UITableViewController {
     
-    var favoriteMovies: [Movie] = [];
+    var favoriteMovies : Results<Movie>?
+    
+    let realm = try! Realm()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        favoriteMovies = MyDB.sharedInstance.myMovies
-        tableView.reloadData()
+        loadMovies()
     }
     
     //MARK: -- tableviewController --
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteMovies.count
+        return favoriteMovies?.count ?? 1
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,15 +34,28 @@ class MovieListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //Movie *m = _movies[indexPath.row];
-        let m = favoriteMovies[indexPath.row];
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTableViewCell
-        cell.setMovie(containingMovie: m)
-        cell.canAdd(button: false)
-        //cell.ratingDelegate = self;
-        return cell;
+        
+        if let selectedMovie = favoriteMovies?[indexPath.row] {
+            
+            cell.setMovie(containingMovie: selectedMovie)
+            cell.canAdd(button: false)
+            //cell.accessoryType = Item.done ? .checkmark : .none
+        } else {
+            cell.canAdd(button: false)
+            cell.titleLabel.text = "No movies added yet"
+            cell.yearLabel.text = ""
+            cell.selectionStyle = .none
+        }
+        
+        return cell
     }
-
-
+    
+    func loadMovies() {
+        
+        favoriteMovies = realm.objects(Movie.self)
+        tableView.reloadData()
+    }
 }
 

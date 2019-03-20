@@ -81,10 +81,10 @@
 		D75D4D42223834DD009901D4 /* MovieBox-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				D75D4D43223834DD009901D4 /* AppDelegate.swift */,
 				D75D4D5B2239163D009901D4 /* Controllers */,
 				D75D4D5A22391637009901D4 /* Views */,
 				D75D4D592239162F009901D4 /* Models */,
-				D75D4D43223834DD009901D4 /* AppDelegate.swift */,
 				D75D4D49223834DD009901D4 /* Main.storyboard */,
 				D75D4D4C223834E1009901D4 /* Assets.xcassets */,
 				D75D4D4E223834E1009901D4 /* LaunchScreen.storyboard */,
@@ -232,6 +232,8 @@
 				"${PODS_ROOT}/Target Support Files/Pods-MovieBox-Swift/Pods-MovieBox-Swift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageLoader/ImageLoader.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/STRatingControl/STRatingControl.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -241,6 +243,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageLoader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STRatingControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
