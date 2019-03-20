@@ -49,7 +49,8 @@ class MovieTableViewCell: UITableViewCell {
         movie = containingMovie
         titleLabel.text = containingMovie.title
         yearLabel.text = containingMovie.year
-        if let img = containingMovie.poster {
+        
+        if let img = containingMovie.getImage() {
             posterImage.image = img
         }
         else {

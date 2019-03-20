@@ -29,29 +29,13 @@ class DetailedMovieViewController: UIViewController {
             
             //MARK : ---------- TODO testing -----
         titleLabel.text = movie.title
-        yearLabel.text = movie.title            //Change
-        descriptionTextView.text = movie.year
+        yearLabel.text = movie.year            //Change
+        descriptionTextView.text = movie.summary
         rating.maxRating = 5
-        
-//            if let r = movie.rating {
-//                rating.rating = Int(r)
-//            }
-            
+        rating.rating = Int(movie.rating)
             
             if titleLabel.text == nil {
                 titleLabel.text = "Where is the titel" }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

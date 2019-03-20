@@ -23,6 +23,10 @@ class MovieListViewController: UITableViewController {
         loadMovies()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        loadMovies()
+    }
+    
     //MARK: -- tableviewController --
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

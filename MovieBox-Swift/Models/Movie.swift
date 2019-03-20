@@ -14,28 +14,18 @@ class Movie : Object {
     
     @objc dynamic var title : String = ""
      var poster : UIImage?
-    //@objc dynamic var description : String = ""
+    @objc dynamic var imageUrl : String = ""
+    @objc dynamic var summary : String = ""
     @objc dynamic var year : String = ""
     @objc dynamic var rating : Double = 0.0
     
-//    init() {
-//        title = "Star wars"
-//        poster = nil
-//        description = "Irom Parum"
-//        rating = 3.0
-//        year = "1999"
-//    }
-//
-//    convenience init (title : String, year : String, rating : Double) {
-//        self.init()
-//        self.title = title
-//        self.year = year
-//        self.rating = rating
-//    }
-    
-    
-    func getImage() {
-        
+    func getImage() -> UIImage? {
+        if let url = NSURL(string: imageUrl) {
+            if let data = NSData(contentsOf: url as URL) {
+                return UIImage(data: data as Data)!
+            }
+        }
+        return nil
     }
     
     

@@ -123,12 +123,11 @@ class SearchMovieViewController: UITableViewController {
                 if let url = NSURL(string: posterURL!) {
                     if let data = NSData(contentsOf: url as URL) {
                         m.poster = UIImage(data: data as Data)
+                        m.imageUrl = posterURL!
                     }
                 }
-                
                 filteredMovies.append(m)
             }
-            
             tableView.reloadData()
         }
         else {
