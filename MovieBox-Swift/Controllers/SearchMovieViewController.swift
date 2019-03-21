@@ -20,15 +20,7 @@ class SearchMovieViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        if filteredMovies.count < 1 {
-
-            //default -- star wars
-            searchField.text = "star wars"
-            SearchButtonPressed(self)
-            searchField.text = ""
         }
-    }
     
     //Constant
     //https://www.omdbapi.com/?s=%@&page=%ld&apikey=e3770048

@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import RealmSwift
+import SwipeCellKit
 
 class MovieListViewController: UITableViewController {
     
@@ -92,4 +93,5 @@ extension MovieListViewController: UISearchBarDelegate {
         }
     }
 }
+
 

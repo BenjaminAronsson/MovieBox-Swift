@@ -17,8 +17,8 @@
 		D75D4D582239143D009901D4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75D4D572239143D009901D4 /* Movie.swift */; };
 		D75D4D5D223917E5009901D4 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75D4D5C223917E5009901D4 /* MovieTableViewCell.swift */; };
 		D7A3E57B2239568300399284 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A3E57A2239568300399284 /* UIView.swift */; };
-		D7A3E57D2239636100399284 /* MyDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A3E57C2239636100399284 /* MyDB.swift */; };
 		D7A3E57F2239772800399284 /* DetailedMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A3E57E2239772800399284 /* DetailedMovieViewController.swift */; };
+		D7D1B96E2242AC5700529243 /* SaveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D1B96D2242AC5700529243 /* SaveImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,8 @@
 		D75D4D572239143D009901D4 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		D75D4D5C223917E5009901D4 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		D7A3E57A2239568300399284 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		D7A3E57C2239636100399284 /* MyDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDB.swift; sourceTree = "<group>"; };
 		D7A3E57E2239772800399284 /* DetailedMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMovieViewController.swift; sourceTree = "<group>"; };
+		D7D1B96D2242AC5700529243 /* SaveImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +96,8 @@
 		D75D4D592239162F009901D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D7A3E57A2239568300399284 /* UIView.swift */,
 				D75D4D572239143D009901D4 /* Movie.swift */,
+				D7D1B96D2242AC5700529243 /* SaveImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				D75D4D5C223917E5009901D4 /* MovieTableViewCell.swift */,
+				D7A3E57A2239568300399284 /* UIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,7 +117,6 @@
 				D7A3E57E2239772800399284 /* DetailedMovieViewController.swift */,
 				D75D4D45223834DD009901D4 /* MovieListViewController.swift */,
 				D75D4D47223834DD009901D4 /* SearchMovieViewController.swift */,
-				D7A3E57C2239636100399284 /* MyDB.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -237,6 +237,7 @@
 				"${BUILT_PRODUCTS_DIR}/STRatingControl/STRatingControl.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -249,6 +250,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STRatingControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -268,7 +270,7 @@
 				D75D4D582239143D009901D4 /* Movie.swift in Sources */,
 				D7A3E57B2239568300399284 /* UIView.swift in Sources */,
 				D7A3E57F2239772800399284 /* DetailedMovieViewController.swift in Sources */,
-				D7A3E57D2239636100399284 /* MyDB.swift in Sources */,
+				D7D1B96E2242AC5700529243 /* SaveImage.swift in Sources */,
 				D75D4D46223834DD009901D4 /* MovieListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

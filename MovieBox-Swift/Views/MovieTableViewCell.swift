@@ -30,6 +30,13 @@ class MovieTableViewCell: UITableViewCell {
         
         do {
             try self.realm.write {
+                
+                //saving image locally
+//                if let image = movie.getImage() {
+//                    let imageString = UIImage.saveImage(image)
+//                    movie.imageUrl = imageString() ?? ""
+//                }
+    
                realm.add(movie)
                 //added movie to list
                 print("Movie added to list")

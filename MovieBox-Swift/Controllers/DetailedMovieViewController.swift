@@ -25,7 +25,14 @@ class DetailedMovieViewController: UIViewController {
 
         if let movie = selectedMovie {
         // Do any additional setup after loading the view.
-        posterImage.image = movie.poster
+            if let img = movie.getImage() {
+                print("image found")
+                posterImage.image = img
+            }
+            else {
+                print("no image found")
+                posterImage.image = UIImage.init(named: "missingImage")
+            }
             
             //MARK : ---------- TODO testing -----
         titleLabel.text = movie.title

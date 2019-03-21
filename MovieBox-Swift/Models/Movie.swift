@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
+
 class Movie : Object {
     
     @objc dynamic var title : String = ""
@@ -20,7 +21,11 @@ class Movie : Object {
     @objc dynamic var rating : Double = 0.0
     
     func getImage() -> UIImage? {
-        if let url = NSURL(string: imageUrl) {
+        
+//        if let im = UIImage.loadImageFromDiskWith(fileurl: imageUrl) {
+//            return im
+//        }
+         if let url = NSURL(string: imageUrl) {
             if let data = NSData(contentsOf: url as URL) {
                 return UIImage(data: data as Data)!
             }
