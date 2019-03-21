@@ -26,8 +26,19 @@ class MovieTableViewCell: UITableViewCell {
 
     @IBAction func addButtonPressed(_ sender: Any) {
        
+        favoriteMovies = realm.objects(Movie.self)
         
+        // this will crash - don't do it! :)
+        //MARK: - ERROR!!
+        for i in 0..<favoriteMovies!.count {
+            if (favoriteMovies![i].title == movie.title) {
+                SVProgressHUD.showError(withStatus: "Movie is already in favorites")
+                return
+            }
+        }
         
+       
+    
         do {
             try self.realm.write {
                 
@@ -44,7 +55,7 @@ class MovieTableViewCell: UITableViewCell {
             }
         } catch {
             print("Error saving item \(error)")
-            SVProgressHUD.showError(withStatus: "Move could not be added")
+            SVProgressHUD.showError(withStatus: "Movie could not be added")
         }
     }
     

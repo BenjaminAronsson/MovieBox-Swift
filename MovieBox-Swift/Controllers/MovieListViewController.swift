@@ -69,6 +69,18 @@ class MovieListViewController: UITableViewController {
         favoriteMovies = realm.objects(Movie.self)
         tableView.reloadData()
     }
+    
+    //MARK: -- prep for segue --
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "listToDetail" {
+            let dcController = segue.destination as! DetailedMovieViewController
+            if let selectedIndexPath : Int = self.tableView?.indexPathForSelectedRow?.row {
+                dcController.selectedMovie = favoriteMovies![selectedIndexPath]
+            }
+        }
+    }
 }
 
 //MARK: - searchbar
