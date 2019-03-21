@@ -197,40 +197,48 @@
         <!--Cinema-->
         <scene sceneID="Yhv-Tm-ofD">
             <objects>
-                <viewController id="AK8-ZP-zad" sceneMemberID="viewController">
+                <viewController id="AK8-ZP-zad" customClass="NearestCinemaViewController" customModule="MovieBox_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CWK-2K-OfO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Nearest cinema" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7fF-bf-zRn">
-                                <rect key="frame" x="67" y="312" width="241" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqM-bu-0sg">
-                                <rect key="frame" x="80" y="363" width="215" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hPf-cp-Hbi">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8w5-6C-EKO">
+                                <rect key="frame" x="80" y="488.5" width="215" height="60.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8w5-6C-EKO" secondAttribute="height" multiplier="188:53" id="r6r-R3-gcO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <state key="normal" title="Find nearest cinema">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="7fF-bf-zRn" secondAttribute="centerY" id="F3i-n2-H0D"/>
-                            <constraint firstItem="eqM-bu-0sg" firstAttribute="top" secondItem="7fF-bf-zRn" secondAttribute="bottom" constant="8" symbolic="YES" id="WQm-Ow-g72"/>
-                            <constraint firstItem="eqM-bu-0sg" firstAttribute="centerX" secondItem="7fF-bf-zRn" secondAttribute="centerX" id="dak-Hh-jvv"/>
-                            <constraint firstAttribute="centerX" secondItem="7fF-bf-zRn" secondAttribute="centerX" id="hIi-1N-GnI"/>
+                            <constraint firstItem="0mb-x7-qRM" firstAttribute="bottom" secondItem="hPf-cp-Hbi" secondAttribute="bottom" id="AvR-xT-yz4"/>
+                            <constraint firstItem="hPf-cp-Hbi" firstAttribute="leading" secondItem="0mb-x7-qRM" secondAttribute="leading" id="F17-Ed-Wkr"/>
+                            <constraint firstItem="0mb-x7-qRM" firstAttribute="trailing" secondItem="hPf-cp-Hbi" secondAttribute="trailing" id="Fem-nT-HfS"/>
+                            <constraint firstItem="8w5-6C-EKO" firstAttribute="centerX" secondItem="hPf-cp-Hbi" secondAttribute="centerX" id="LKr-qr-onh"/>
+                            <constraint firstItem="hPf-cp-Hbi" firstAttribute="top" secondItem="0mb-x7-qRM" secondAttribute="top" id="QBq-Vq-OnI"/>
+                            <constraint firstItem="0mb-x7-qRM" firstAttribute="trailing" secondItem="8w5-6C-EKO" secondAttribute="trailing" constant="80" id="ozX-4o-tEN"/>
+                            <constraint firstItem="0mb-x7-qRM" firstAttribute="bottom" secondItem="8w5-6C-EKO" secondAttribute="bottom" constant="69" id="siS-6f-ZgJ"/>
+                            <constraint firstItem="8w5-6C-EKO" firstAttribute="leading" secondItem="0mb-x7-qRM" secondAttribute="leading" priority="999" constant="80" id="u4l-vb-D6O"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0mb-x7-qRM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cinema" image="map-icon" id="smD-0M-iob"/>
                     <navigationItem key="navigationItem" id="5gG-c8-N3t"/>
+                    <connections>
+                        <outlet property="mapView" destination="hPf-cp-Hbi" id="F4V-1f-DcG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZI5-bC-Yxc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58" y="1047"/>
+            <point key="canvasLocation" x="56.799999999999997" y="1046.6266866566718"/>
         </scene>
         <!--Identify-->
         <scene sceneID="ZKj-es-kpv">
@@ -496,6 +504,6 @@
         <image name="star-icon-filled" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5d3-Ql-WY2"/>
+        <segue reference="o59-8J-nyt"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,7 +36,7 @@ class DetailedMovieViewController: UIViewController {
                 posterImage.image = UIImage.init(named: "missingImage")
             }
             
-            //MARK : ---------- TODO testing -----
+        //MARK : ---------- TODO testing -----
         titleLabel.text = movie.title
         yearLabel.text = movie.year            //Change
         descriptionTextView.text = movie.summary

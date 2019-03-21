@@ -18,6 +18,7 @@
 		D75D4D5D223917E5009901D4 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75D4D5C223917E5009901D4 /* MovieTableViewCell.swift */; };
 		D7A3E57B2239568300399284 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A3E57A2239568300399284 /* UIView.swift */; };
 		D7A3E57F2239772800399284 /* DetailedMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A3E57E2239772800399284 /* DetailedMovieViewController.swift */; };
+		D7C8D2B92243CB460014C3BD /* NearestCinemaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C8D2B82243CB460014C3BD /* NearestCinemaViewController.swift */; };
 		D7D1B96E2242AC5700529243 /* SaveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D1B96D2242AC5700529243 /* SaveImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		D75D4D5C223917E5009901D4 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		D7A3E57A2239568300399284 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D7A3E57E2239772800399284 /* DetailedMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMovieViewController.swift; sourceTree = "<group>"; };
+		D7C8D2B82243CB460014C3BD /* NearestCinemaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestCinemaViewController.swift; sourceTree = "<group>"; };
 		D7D1B96D2242AC5700529243 /* SaveImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 				D7A3E57E2239772800399284 /* DetailedMovieViewController.swift */,
 				D75D4D45223834DD009901D4 /* MovieListViewController.swift */,
 				D75D4D47223834DD009901D4 /* SearchMovieViewController.swift */,
+				D7C8D2B82243CB460014C3BD /* NearestCinemaViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				D75D4D582239143D009901D4 /* Movie.swift in Sources */,
 				D7A3E57B2239568300399284 /* UIView.swift in Sources */,
 				D7A3E57F2239772800399284 /* DetailedMovieViewController.swift in Sources */,
+				D7C8D2B92243CB460014C3BD /* NearestCinemaViewController.swift in Sources */,
 				D7D1B96E2242AC5700529243 /* SaveImage.swift in Sources */,
 				D75D4D46223834DD009901D4 /* MovieListViewController.swift in Sources */,
 			);
