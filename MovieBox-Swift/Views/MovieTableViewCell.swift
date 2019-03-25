@@ -52,6 +52,8 @@ class MovieTableViewCell: UITableViewCell {
                 //added movie to list
                 print("Movie added to list")
                 SVProgressHUD.showSuccess(withStatus: "Added to favorites")
+                //addButton.titleLabel?.text = "Added"
+                //addButton.backgroundColor = UIColor.purple
             }
         } catch {
             print("Error saving item \(error)")
