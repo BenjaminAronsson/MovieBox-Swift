@@ -163,13 +163,24 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
                 
                 //Add annotation
                 for item in self.mapItemList {
+                    
+                   
                     let annotation = PlaceAnnotation()
                     annotation.coordinate = item.placemark.location!.coordinate
                     annotation.title = item.name
                     annotation.url = item.url
                     annotation.detailAddress = item.placemark.title
                     self.mapView!.addAnnotation(annotation)
+                    
+                    //zoom to pin
+                    if ( item == self.mapItemList[0] ) {
+                        let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(annotation.coordinate.latitude, annotation.coordinate.longitude)
+                        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                        let region = MKCoordinateRegion(center: coordinate, span: span)
+                        self.mapView.setRegion(region, animated: true)
+                    }
                     placeMarks.add(item)
+                 
                     
                 }
                 //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationMapData"), object: placeMarks)
