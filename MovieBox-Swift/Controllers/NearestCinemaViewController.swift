@@ -195,9 +195,12 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
         if let place: PlaceAnnotation = view.annotation as? PlaceAnnotation {
          
             //place.title
-            print("\(place.title)")
+            print("\(String(describing: place.title))")
             if let url = place.url {
                 UIApplication.shared.open(url, options: [:])
+            }
+            else {
+                SVProgressHUD.showError(withStatus: "No webpage found")
             }
         }
     }

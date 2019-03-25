@@ -28,7 +28,8 @@ class MovieTableViewCell: UITableViewCell {
        
         favoriteMovies = realm.objects(Movie.self)
         
-        // this will crash - don't do it! :)
+        SVProgressHUD.setMaximumDismissTimeInterval(1)
+        
         //MARK: - ERROR!!
         for i in 0..<favoriteMovies!.count {
             if (favoriteMovies![i].title == movie.title) {
@@ -36,8 +37,6 @@ class MovieTableViewCell: UITableViewCell {
                 return
             }
         }
-        
-       
     
         do {
             try self.realm.write {
@@ -54,10 +53,12 @@ class MovieTableViewCell: UITableViewCell {
                 SVProgressHUD.showSuccess(withStatus: "Added to favorites")
                 //addButton.titleLabel?.text = "Added"
                 //addButton.backgroundColor = UIColor.purple
+                
             }
         } catch {
             print("Error saving item \(error)")
             SVProgressHUD.showError(withStatus: "Movie could not be added")
+           
         }
     }
     
