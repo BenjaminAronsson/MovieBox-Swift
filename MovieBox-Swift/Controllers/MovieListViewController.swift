@@ -61,6 +61,8 @@ class MovieListViewController: UITableViewController {
             cell.selectionStyle = .none
         }
         
+        cell.delegate = self
+        
         return cell
     }
     
@@ -103,6 +105,34 @@ extension MovieListViewController: UISearchBarDelegate {
             }
             
         }
+    }
+}
+
+//MARK: - swipecell
+extension MovieListViewController : SwipeTableViewCellDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+     
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, IndexPath) in
+            
+            if let movieForDeletion = self.favoriteMovies?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        self.realm.delete(movieForDeletion)
+                    }
+                    self.tableView.reloadData()
+                } catch {
+                    print("error deleting item")
+                }
+            }
+            print("delete")
+        }
+        deleteAction.image = UIImage(named: "delete-icon")
+        
+        return [deleteAction]
     }
 }
 

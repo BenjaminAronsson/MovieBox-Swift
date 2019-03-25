@@ -9,8 +9,9 @@
 import UIKit
 import RealmSwift
 import SVProgressHUD
+import SwipeCellKit
 
-class MovieTableViewCell: UITableViewCell {
+class MovieTableViewCell: SwipeTableViewCell {
     
     
     @IBOutlet weak var posterImage: UIImageView!
@@ -23,7 +24,6 @@ class MovieTableViewCell: UITableViewCell {
     
     let realm = try! Realm()
     
-
     @IBAction func addButtonPressed(_ sender: Any) {
        
         favoriteMovies = realm.objects(Movie.self)
@@ -53,12 +53,10 @@ class MovieTableViewCell: UITableViewCell {
                 SVProgressHUD.showSuccess(withStatus: "Added to favorites")
                 //addButton.titleLabel?.text = "Added"
                 //addButton.backgroundColor = UIColor.purple
-                
             }
         } catch {
             print("Error saving item \(error)")
             SVProgressHUD.showError(withStatus: "Movie could not be added")
-           
         }
     }
     
@@ -68,7 +66,6 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     //MARK: -- configuring cell --
-    
     func setMovie(containingMovie : Movie) {
         movie = containingMovie
         titleLabel.text = containingMovie.title
@@ -93,5 +90,4 @@ class MovieTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
 }
