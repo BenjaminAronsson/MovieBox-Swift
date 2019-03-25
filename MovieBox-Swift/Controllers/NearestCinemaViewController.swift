@@ -18,10 +18,6 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
     
-   //  var url = https://maps.googleapis.com/maps/api/place/search/json?location=41.104805,29.024291
-    
- //   &radius=50000&sensor=true&key=AIzaSyAVH0qHD6BPxRlnck3rIqcxC5TTwOTyfds&types=gas_station||shopping_mall
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +62,7 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
         }
     }
     
-    // MARK - CLLocationManagerDelegate
+    //MARK: - CLLocationManagerDelegate
     
     var locValue:CLLocationCoordinate2D = CLLocationCoordinate2D()
     
@@ -79,38 +75,23 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
                 let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
                 mapView.setRegion(viewRegion, animated: false)
                 
-                 locValue = manager.location!.coordinate
+                locValue = manager.location!.coordinate
                 
                 mapView.mapType = MKMapType.standard
-                
-//                let annotation = MKPointAnnotation()
-//                annotation.coordinate = locValue
-//                annotation.title = "Movie lover"
-//                annotation.subtitle = "current location"
-//                mapView.addAnnotation(annotation)
-                
                 userCoordinate = CLLocationCoordinate2DMake(locValue.latitude, locValue.longitude)
             }
         }
     }
     
-    //var delegate : NearByDelegate?
     var boundingRegion : MKCoordinateRegion = MKCoordinateRegion()
     var localSearch : MKLocalSearch!
-    //var locationManager : CLLocationManager!
     var userCoordinate : CLLocationCoordinate2D!
-    //var locValue:CLLocationCoordinate2D!
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var places: [MKMapItem] = []
-    //var strCategory : String!
-    //var viewDetail : UIView!
-    
     var mapItemList: [MKMapItem] = []
     
     
     //MARK: - searching for cinema
-    
-    
     @IBAction func findButtonPressed(_ sender: Any) {
         print("button pressed")
         findCinema()
@@ -146,13 +127,6 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
                 
                 SVProgressHUD.showError(withStatus: "Could not found place")
                 print(actualError)
-//                let alert = UIAlertController(title: "Could not find places",
-//                                              message: actualError.localizedDescription,
-//                                              preferredStyle: .alert)
-//
-//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                alert.addAction(defaultAction)
-//                self.present(alert, animated: true, completion: nil)
             }
             else {
                 //all returning items
@@ -180,22 +154,16 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
                         self.mapView.setRegion(region, animated: true)
                     }
                     placeMarks.add(item)
-                 
-                    
                 }
-                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationMapData"), object: placeMarks)
-                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "categoryName"), object: self.strCategory)
                 
                 self.boundingRegion = response!.boundingRegion
             }
-            //UIApplication.shared.isNetworkActivityIndicatorVisible = false
             SVProgressHUD.dismiss()
         }
         
         self.localSearch = MKLocalSearch(request: request)
         
         self.localSearch!.start(completionHandler: completionHandler)
-        //UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
     
@@ -213,6 +181,4 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
     @objc func centerMapOnUserButtonClicked() {
         mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
     }
-
-    
 }
