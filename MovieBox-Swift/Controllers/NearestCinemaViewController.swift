@@ -144,8 +144,13 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
                     annotation.title = item.name
                     annotation.url = item.url
                     annotation.detailAddress = item.placemark.title
-                    self.mapView!.addAnnotation(annotation)
                     
+                    
+                    
+                    //annotation.canShowCallout = true
+                    //annotationView.rightCalloutAccessoryView = UIButton.init(type: UIButton.ButtonType.detailDisclosure)
+                    
+                    self.mapView!.addAnnotation(annotation)
                     //zoom to pin
                     if ( item == self.mapItemList[0] ) {
                         let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(annotation.coordinate.latitude, annotation.coordinate.longitude)
@@ -167,7 +172,7 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
     }
     
     
-    //MARK - location button
+    //MARK: - location button
     func addMapTrackingButton(){
         let image = UIImage(named: "find-me-icon") as UIImage?
         let button   = UIButton(type: UIButton.ButtonType.custom) as UIButton
@@ -181,4 +186,32 @@ class NearestCinemaViewController: UIViewController, MKMapViewDelegate, CLLocati
     @objc func centerMapOnUserButtonClicked() {
         mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
     }
+    
+    //MARK: - location tapped
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    {
+        print("Pin activated")
+        
+        if let place: PlaceAnnotation = view.annotation as? PlaceAnnotation {
+         
+            //place.title
+            print("\(place.title)")
+            if let url = place.url {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "annotationView")
+        annotationView.canShowCallout = true
+        annotationView.rightCalloutAccessoryView = UIButton.init(type: UIButton.ButtonType.detailDisclosure)
+        print("pin created?")
+        return annotationView
+    }
 }
+
+
+
+
