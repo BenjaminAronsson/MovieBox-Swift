@@ -290,17 +290,43 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search in favorites" id="xuo-cs-Cvx">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="KNZ-2W-nUF" id="TfS-4g-Gmk"/>
-                            </connections>
-                        </searchBar>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="5JC-H8-Ksz">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for your favorite movie" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="wGx-3K-e7k">
+                                    <rect key="frame" x="20" y="40" width="335" height="46"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartQuotesType="no"/>
+                                    <connections>
+                                        <action selector="searchBarClicked:" destination="KNZ-2W-nUF" eventType="primaryActionTriggered" id="oyd-Qb-tWX"/>
+                                        <action selector="searchBarTextChange:" destination="KNZ-2W-nUF" eventType="editingChanged" id="mnd-lH-boC"/>
+                                        <outlet property="delegate" destination="KNZ-2W-nUF" id="49s-0a-I5s"/>
+                                    </connections>
+                                </textField>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pk-qP-ko6">
+                                    <rect key="frame" x="20" y="10" width="335" height="20"/>
+                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="5pk-qP-ko6" firstAttribute="trailing" secondItem="wGx-3K-e7k" secondAttribute="trailing" id="46i-5x-3yk"/>
+                                <constraint firstItem="5pk-qP-ko6" firstAttribute="top" secondItem="5JC-H8-Ksz" secondAttribute="top" constant="10" id="6pd-6l-9MK"/>
+                                <constraint firstAttribute="trailing" secondItem="wGx-3K-e7k" secondAttribute="trailing" constant="20" id="Iyw-jM-YGd"/>
+                                <constraint firstAttribute="bottom" secondItem="wGx-3K-e7k" secondAttribute="bottom" constant="20" id="YVQ-Hc-cMP"/>
+                                <constraint firstItem="wGx-3K-e7k" firstAttribute="centerX" secondItem="5JC-H8-Ksz" secondAttribute="centerX" id="agO-Wg-e7j"/>
+                                <constraint firstItem="wGx-3K-e7k" firstAttribute="leading" secondItem="5JC-H8-Ksz" secondAttribute="leading" priority="999" constant="20" id="flw-qk-bQK"/>
+                                <constraint firstItem="wGx-3K-e7k" firstAttribute="top" secondItem="5pk-qP-ko6" secondAttribute="bottom" constant="10" id="iQd-Fo-djx"/>
+                                <constraint firstItem="5pk-qP-ko6" firstAttribute="leading" secondItem="wGx-3K-e7k" secondAttribute="leading" id="pfJ-Kb-ZRj"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="movieCell" rowHeight="119" id="fDD-pc-cco" customClass="MovieTableViewCell" customModule="MovieBox_Swift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="119"/>
+                                <rect key="frame" x="0.0" y="134" width="375" height="119"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fDD-pc-cco" id="CnL-bA-d4B">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="118.5"/>

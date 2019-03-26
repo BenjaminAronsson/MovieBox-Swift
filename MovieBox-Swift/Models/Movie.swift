@@ -18,6 +18,7 @@ class Movie : Object {
     @objc dynamic var imageUrl : String = ""
     @objc dynamic var summary : String = ""
     @objc dynamic var year : String = ""
+    @objc dynamic var imageData = Data()
     @objc dynamic var rating : Double = 0.0
     
     func getImage() -> UIImage? {
@@ -25,7 +26,13 @@ class Movie : Object {
 //        if let im = UIImage.loadImageFromDiskWith(fileurl: imageUrl) {
 //            return im
 //        }
-         if let url = NSURL(string: imageUrl) {
+        
+        if let img = UIImage(data: imageData) {
+            return img
+        }
+        
+        
+         else if let url = NSURL(string: imageUrl) {
             if let data = NSData(contentsOf: url as URL) {
                 return UIImage(data: data as Data)!
             }
@@ -33,12 +40,9 @@ class Movie : Object {
         return nil
     }
     
-    
-    //read image
-//NSString *imagePath = data[@"MoviePoster"];
-//    if (imagePath) {
-    //set image
-//    self.poster = [UIImage imageWithData:[NSData dataWithContentsOfFile:imagePath]];
-//    }
-//    }
+    func saveImageLocally() {
+        //let data = poster?.pngData()
+        //när bilden sätts
+        imageData = (poster?.jpegData(compressionQuality: 0.9))!
+    }
 }

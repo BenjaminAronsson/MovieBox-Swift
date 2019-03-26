@@ -83,30 +83,56 @@ class MovieListViewController: UITableViewController {
             }
         }
     }
-}
-
-//MARK: - searchbar
-extension MovieListViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    
+    @IBAction func searchBarClicked(_ sender: UITextField) {
         
-        favoriteMovies = favoriteMovies?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
+        favoriteMovies = favoriteMovies?.filter("title CONTAINS[cd] %@", sender.text!).sorted(byKeyPath: "title", ascending: true)
+        
+        DispatchQueue.main.async {
+            sender.resignFirstResponder()
+        }
         
         tableView.reloadData()
     }
     
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if (searchBar.text?.count)! == 0 {
+    @IBAction func searchBarTextChange(_ sender: UITextField) {
+        if (sender.text?.count) == 0 {
             loadMovies()
             
             DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
+                sender.resignFirstResponder()
             }
             
         }
     }
 }
+
+//MARK: - searchbar
+//extension MovieListViewController: UISearchBarDelegate {
+//
+//
+//
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//        favoriteMovies = favoriteMovies?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
+//
+//        tableView.reloadData()
+//    }
+//
+//
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if (searchBar.text?.count)! == 0 {
+//            loadMovies()
+//
+//            DispatchQueue.main.async {
+//                searchBar.resignFirstResponder()
+//            }
+//
+//        }
+//    }
+//}
 
 //MARK: - swipecell
 extension MovieListViewController : SwipeTableViewCellDelegate {
@@ -116,23 +142,28 @@ extension MovieListViewController : SwipeTableViewCellDelegate {
      
         guard orientation == .right else { return nil }
         
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, IndexPath) in
+        let deleteAction = SwipeAction(style: .destructive, title: "Remove") { (action, IndexPath) in
             
             if let movieForDeletion = self.favoriteMovies?[indexPath.row] {
                 do {
                     try self.realm.write {
                         self.realm.delete(movieForDeletion)
                     }
-                    self.tableView.reloadData()
                 } catch {
-                    print("error deleting item")
+                    print("error deleting movies")
                 }
             }
-            print("delete")
+            print("Movie removed")
         }
         deleteAction.image = UIImage(named: "delete-icon")
         
         return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive
+        return options
     }
 }
 

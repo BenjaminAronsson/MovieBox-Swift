@@ -46,7 +46,7 @@ class MovieTableViewCell: SwipeTableViewCell {
 //                    let imageString = UIImage.saveImage(image)
 //                    movie.imageUrl = imageString() ?? ""
 //                }
-    
+                movie.saveImageLocally()
                realm.add(movie)
                 //added movie to list
                 print("Movie added to list")
@@ -54,6 +54,7 @@ class MovieTableViewCell: SwipeTableViewCell {
                 //addButton.titleLabel?.text = "Added"
                 //addButton.backgroundColor = UIColor.purple
             }
+            
         } catch {
             print("Error saving item \(error)")
             SVProgressHUD.showError(withStatus: "Movie could not be added")
